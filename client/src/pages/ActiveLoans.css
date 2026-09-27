@@ -1,0 +1,1027 @@
+/* =========================================================
+   ACTIVE LOANS PAGE
+========================================================= */
+
+.active-loans-page {
+    width: 100%;
+    padding-bottom: 40px;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.active-loans-header {
+    margin-bottom: 20px;
+}
+
+.active-loans-header h2 {
+    margin: 0 0 5px;
+
+    color: var(--charcoal-900);
+
+    font-size: 25px;
+    font-weight: 750;
+
+    letter-spacing: -0.4px;
+}
+
+.active-loans-header p {
+    margin: 0;
+
+    color: var(--text-muted);
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   MESSAGES
+========================================================= */
+
+.active-success {
+    background: var(--success-bg);
+
+    border: 1px solid #c9e2cd;
+
+    color: var(--success);
+
+    padding: 10px 13px;
+
+    border-radius: 7px;
+
+    margin-bottom: 15px;
+
+    font-size: 11px;
+}
+
+.active-error {
+    background: var(--danger-bg);
+
+    border: 1px solid #eccaca;
+
+    color: var(--danger);
+
+    padding: 10px 13px;
+
+    border-radius: 7px;
+
+    margin-bottom: 15px;
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   TOOLBAR
+========================================================= */
+
+.active-loans-toolbar {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 16px;
+}
+
+.active-search-input {
+    flex: 1;
+
+    min-width: 0;
+
+    border: 1px solid var(--border);
+
+    background: #ffffff;
+
+    border-radius: 7px;
+
+    padding: 10px 13px;
+
+    font-family: inherit;
+
+    font-size: 11px;
+
+    color: var(--charcoal-900);
+
+    outline: none;
+
+    box-shadow: var(--shadow-xs);
+}
+
+.active-search-input::placeholder {
+    color: #a4a09a;
+}
+
+.active-search-input:focus {
+    border-color: var(--gold-500);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(197, 150, 34, 0.09);
+}
+
+.active-loan-count {
+    white-space: nowrap;
+
+    padding: 8px 11px;
+
+    border-radius: 7px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fffaf0,
+            #f4ead0
+        );
+
+    border: 1px solid #e8d6a7;
+
+    color: var(--gold-700);
+
+    font-size: 10px;
+    font-weight: 650;
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.active-loans-table-wrapper {
+    width: 100%;
+
+    overflow-x: auto;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #fcfaf6
+        );
+
+    border: 1px solid var(--border-light);
+
+    border-radius: 11px;
+
+    box-shadow: var(--shadow-xs);
+}
+
+.active-loans-table {
+    width: 100%;
+
+    min-width: 1050px;
+
+    border-collapse: collapse;
+}
+
+.active-loans-table th {
+    background:
+        linear-gradient(
+            180deg,
+            #f6f4ef,
+            #efede7
+        );
+
+    color: var(--charcoal-600);
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    text-align: left;
+
+    padding: 12px 13px;
+
+    border-bottom:
+        1px solid var(--border);
+
+    white-space: nowrap;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.25px;
+}
+
+.active-loans-table td {
+    padding: 13px;
+
+    border-bottom:
+        1px solid #eeece7;
+
+    color: var(--text-secondary);
+
+    font-size: 10px;
+
+    vertical-align: middle;
+}
+
+.active-loans-table tbody tr {
+    transition:
+        background var(--transition-fast);
+}
+
+.active-loans-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.active-loans-table tbody tr:hover {
+    background:
+        linear-gradient(
+            90deg,
+            #fffdf8,
+            #faf8f2
+        );
+}
+
+
+/* =========================================================
+   CLIENT
+========================================================= */
+
+.client-cell {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+}
+
+.client-cell strong {
+    color: var(--charcoal-900);
+
+    font-size: 10px;
+}
+
+.client-cell span {
+    color: var(--text-muted);
+
+    font-size: 9px;
+}
+
+
+/* =========================================================
+   METAL BADGES
+========================================================= */
+
+.metal-badge {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 45px;
+
+    padding: 5px 8px;
+
+    border-radius: 20px;
+
+    font-size: 9px;
+
+    font-weight: 700;
+}
+
+.metal-badge.gold {
+    background:
+        linear-gradient(
+            135deg,
+            #fff7dc,
+            #f4e1a6
+        );
+
+    border: 1px solid #e5c96f;
+
+    color: #88630d;
+}
+
+.metal-badge.silver {
+    background:
+        linear-gradient(
+            135deg,
+            #f3f5f6,
+            #dfe2e4
+        );
+
+    border: 1px solid #c5c9cc;
+
+    color: #5f666b;
+}
+
+
+/* =========================================================
+   ACTIONS
+========================================================= */
+
+.loan-actions {
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+}
+
+.edit-loan-button,
+.return-loan-button {
+    border-radius: 6px;
+
+    padding: 6px 10px;
+
+    font-size: 9px;
+
+    font-weight: 650;
+
+    cursor: pointer;
+}
+
+.edit-loan-button {
+    border: 1px solid var(--border);
+
+    background: #ffffff;
+
+    color: var(--charcoal-700);
+}
+
+.edit-loan-button:hover {
+    background: var(--gold-50);
+
+    border-color: var(--border-gold);
+
+    color: var(--gold-700);
+}
+
+.return-loan-button {
+    border: 1px solid var(--gold-600);
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--gold-400),
+            var(--gold-600)
+        );
+
+    color: #ffffff;
+}
+
+.return-loan-button:hover {
+    background:
+        linear-gradient(
+            135deg,
+            #dfbd50,
+            var(--gold-500)
+        );
+}
+
+
+/* =========================================================
+   EMPTY
+========================================================= */
+
+.active-empty {
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #faf8f3
+        );
+
+    border: 1px solid var(--border-light);
+
+    border-radius: 11px;
+
+    padding: 55px 20px;
+
+    text-align: center;
+
+    color: var(--text-muted);
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   MODAL OVERLAY
+========================================================= */
+
+.loan-modal-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    background:
+        rgba(28, 30, 30, 0.56);
+
+    backdrop-filter: blur(3px);
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: flex-start;
+
+    padding: 35px 20px;
+
+    overflow-y: auto;
+
+    z-index: 1000;
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.loan-modal {
+    width: 100%;
+
+    max-width: 850px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #faf8f3
+        );
+
+    border: 1px solid #d8c68d;
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 22px 65px
+        rgba(20, 20, 18, 0.28);
+
+    overflow: hidden;
+
+    position: relative;
+}
+
+.loan-modal::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    top: 0;
+
+    height: 3px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #9f7413,
+            #e2c45d,
+            #b78a1a
+        );
+}
+
+
+/* =========================================================
+   MODAL HEADER
+========================================================= */
+
+.loan-modal-header {
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 20px 24px;
+
+    border-bottom:
+        1px solid var(--border-light);
+}
+
+.loan-modal-header h3 {
+    margin: 0 0 4px;
+
+    color: var(--charcoal-900);
+
+    font-size: 17px;
+
+    font-weight: 750;
+}
+
+.loan-modal-header p {
+    margin: 0;
+
+    color: var(--text-muted);
+
+    font-size: 10px;
+}
+
+.modal-close-button {
+    width: 31px;
+    height: 31px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 7px;
+
+    background: #ffffff;
+
+    color: var(--charcoal-600);
+
+    font-size: 20px;
+
+    line-height: 1;
+
+    cursor: pointer;
+}
+
+.modal-close-button:hover {
+    background: var(--gold-50);
+
+    border-color: var(--border-gold);
+
+    color: var(--gold-700);
+}
+
+
+/* =========================================================
+   EDIT SECTIONS
+========================================================= */
+
+.edit-section {
+    padding: 19px 24px;
+
+    border-bottom:
+        1px solid var(--border-light);
+}
+
+.edit-section h4 {
+    margin: 0 0 14px;
+
+    color: var(--charcoal-900);
+
+    font-size: 12px;
+
+    font-weight: 700;
+}
+
+.edit-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 13px;
+}
+
+.edit-field {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+.edit-field.full {
+    grid-column: 1 / -1;
+}
+
+.edit-field label {
+    font-size: 9px;
+
+    font-weight: 650;
+
+    color: var(--charcoal-600);
+}
+
+.edit-field label span {
+    color: #b34d42;
+
+    margin-left: 3px;
+}
+
+.edit-field input,
+.edit-field select,
+.edit-field textarea {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    border: 1px solid var(--border);
+
+    border-radius: 7px;
+
+    padding: 9px 10px;
+
+    background: #ffffff;
+
+    color: var(--charcoal-900);
+
+    font-family: inherit;
+
+    font-size: 10px;
+
+    outline: none;
+}
+
+.edit-field input:focus,
+.edit-field select:focus,
+.edit-field textarea:focus {
+    border-color: var(--gold-500);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(197, 150, 34, 0.09);
+}
+
+.edit-field input:disabled {
+    background: var(--silver-100);
+
+    color: var(--silver-500);
+
+    cursor: not-allowed;
+}
+
+.edit-field textarea {
+    resize: vertical;
+}
+
+
+/* =========================================================
+   ACTIVE NOTICE
+========================================================= */
+
+.edit-active-notice {
+    margin: 17px 24px 0;
+
+    padding: 11px 13px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff8e5,
+            #f8edcf
+        );
+
+    border: 1px solid #e5ce8e;
+
+    border-radius: 7px;
+
+    color: #806d3b;
+
+    font-size: 10px;
+
+    line-height: 1.5;
+}
+
+.edit-active-notice strong {
+    color: var(--gold-700);
+}
+
+
+/* =========================================================
+   MODAL ACTIONS
+========================================================= */
+
+.loan-modal-actions {
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 8px;
+
+    padding: 17px 24px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #faf8f3,
+            #f5f2eb
+        );
+}
+
+.modal-cancel-button,
+.modal-save-button,
+.calculate-button {
+    border-radius: 7px;
+
+    padding: 9px 14px;
+
+    font-size: 10px;
+
+    font-weight: 650;
+
+    cursor: pointer;
+}
+
+.modal-cancel-button {
+    border: 1px solid var(--border);
+
+    background: #ffffff;
+
+    color: var(--charcoal-600);
+}
+
+.modal-cancel-button:hover {
+    background: var(--silver-50);
+
+    border-color: var(--silver-400);
+}
+
+.modal-save-button {
+    border: 1px solid var(--gold-600);
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--gold-400),
+            var(--gold-600)
+        );
+
+    color: #ffffff;
+
+    box-shadow:
+        0 3px 8px
+        rgba(173, 126, 19, 0.15);
+}
+
+.modal-save-button:hover {
+    background:
+        linear-gradient(
+            135deg,
+            #dfbd50,
+            var(--gold-500)
+        );
+}
+
+.calculate-button {
+    border: 1px solid #d9bd70;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fffaf0,
+            #f3e6c5
+        );
+
+    color: var(--gold-700);
+}
+
+.calculate-button:hover {
+    background: #f8edcf;
+}
+
+.modal-cancel-button:disabled,
+.modal-save-button:disabled,
+.calculate-button:disabled {
+    opacity: 0.55;
+
+    cursor: not-allowed;
+}
+
+
+/* =========================================================
+   RETURN MODAL
+========================================================= */
+
+.return-modal {
+    max-width: 600px;
+}
+
+.return-loan-info {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 9px;
+
+    padding: 19px 24px;
+}
+
+.return-loan-info > div {
+    background:
+        linear-gradient(
+            135deg,
+            #f8f7f3,
+            #efede7
+        );
+
+    border: 1px solid var(--border-light);
+
+    border-radius: 7px;
+
+    padding: 11px;
+}
+
+.return-loan-info span {
+    display: block;
+
+    font-size: 8px;
+
+    color: var(--text-muted);
+
+    margin-bottom: 4px;
+}
+
+.return-loan-info strong {
+    display: block;
+
+    font-size: 11px;
+
+    color: var(--charcoal-900);
+}
+
+
+/* =========================================================
+   RETURN DATE
+========================================================= */
+
+.return-date-field {
+    padding:
+        0 24px 17px;
+}
+
+.return-date-field label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 9px;
+
+    font-weight: 650;
+
+    color: var(--charcoal-600);
+}
+
+.return-date-field input {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    border: 1px solid var(--border);
+
+    border-radius: 7px;
+
+    padding: 9px 10px;
+
+    background: #ffffff;
+
+    font-family: inherit;
+
+    font-size: 10px;
+
+    outline: none;
+}
+
+.return-date-field input:focus {
+    border-color: var(--gold-500);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(197, 150, 34, 0.09);
+}
+
+
+/* =========================================================
+   RETURN ERROR
+========================================================= */
+
+.return-error {
+    margin:
+        0 24px 15px;
+
+    padding: 10px 12px;
+
+    border-radius: 7px;
+
+    background: var(--danger-bg);
+
+    border: 1px solid #eccaca;
+
+    color: var(--danger);
+
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   CALCULATION
+========================================================= */
+
+.return-calculation {
+    margin:
+        0 24px 17px;
+
+    border: 1px solid #dfd7c0;
+
+    border-radius: 8px;
+
+    overflow: hidden;
+
+    background: #ffffff;
+}
+
+.return-calculation h4 {
+    margin: 0;
+
+    padding: 11px 13px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff7df,
+            #f3e5bd
+        );
+
+    border-bottom:
+        1px solid #e4d29b;
+
+    color: var(--charcoal-900);
+
+    font-size: 10px;
+}
+
+.calculation-row {
+    display: flex;
+
+    justify-content: space-between;
+
+    padding: 8px 13px;
+
+    border-bottom:
+        1px solid #efede8;
+
+    font-size: 9px;
+}
+
+.calculation-row span {
+    color: var(--text-muted);
+}
+
+.calculation-row strong {
+    color: var(--charcoal-900);
+}
+
+.calculation-total {
+    display: flex;
+
+    justify-content: space-between;
+
+    padding: 12px 13px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2e3233,
+            #1f2324
+        );
+
+    color: #e8cb68;
+
+    font-size: 10px;
+}
+
+.calculation-total strong {
+    color: #f1d777;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 750px) {
+    .active-loans-toolbar {
+        align-items: stretch;
+
+        flex-direction: column;
+    }
+
+    .edit-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .edit-field.full {
+        grid-column: auto;
+    }
+
+    .loan-modal-overlay {
+        padding: 15px;
+    }
+
+    .loan-modal-actions {
+        flex-direction: column-reverse;
+    }
+
+    .modal-cancel-button,
+    .modal-save-button,
+    .calculate-button {
+        width: 100%;
+    }
+
+    .return-loan-info {
+        grid-template-columns: 1fr;
+    }
+}
