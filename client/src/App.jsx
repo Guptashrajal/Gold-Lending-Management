@@ -12,7 +12,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 import Dashboard from "./pages/Dashboard";
-import NewLoan from "./pages/NewLoan";
+import NewLoan from "./pages/newLoan";
 import ActiveLoans from "./pages/ActiveLoans";
 import ReturnedLoans from "./pages/ReturnedLoans";
 
@@ -28,7 +28,9 @@ import {
 
 import "./App.css";
 
-const API_URL = "http://localhost:5000";
+const API_URL =
+    import.meta.env.VITE_API_URL ||
+    "http://localhost:5000";
 
 function Login() {
     const [email, setEmail] = useState("");
