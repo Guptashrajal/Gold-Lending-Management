@@ -5,8 +5,10 @@ import { useLanguage } from "../context/LanguageContext";
 
 import "./newLoan.css";
 
-const API_URL = "http://localhost:5000";
-
+const API_URL =
+    import.meta.env.VITE_API_URL ||
+    "http://localhost:5000";
+    
 const NewLoan = () => {
     const navigate = useNavigate();
     const { language } = useLanguage();
