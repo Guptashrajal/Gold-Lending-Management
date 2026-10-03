@@ -65,6 +65,10 @@ const Dashboard = () => {
         }
     }, [token]);
 
+    /* =========================================================
+       LOAN DATA
+    ========================================================= */
+
     const activeLoans = useMemo(() => {
         return loans.filter(
             (loan) =>
@@ -79,17 +83,23 @@ const Dashboard = () => {
         );
     }, [loans]);
 
-    const activeGoldLoans = useMemo(() => {
-        return activeLoans.filter(
-            (loan) => loan.metalType === "Gold"
+    const interestEarned = useMemo(() => {
+        return returnedLoans.reduce(
+            (total, loan) =>
+                total +
+                Number(loan.interestAmount || 0),
+            0
         );
-    }, [activeLoans]);
+    }, [returnedLoans]);
 
-    const activeSilverLoans = useMemo(() => {
-        return activeLoans.filter(
-            (loan) => loan.metalType === "Silver"
+    const principalRecovered = useMemo(() => {
+        return returnedLoans.reduce(
+            (total, loan) =>
+                total +
+                Number(loan.principalAmount || 0),
+            0
         );
-    }, [activeLoans]);
+    }, [returnedLoans]);
 
     const activePrincipal = useMemo(() => {
         return activeLoans.reduce(
@@ -99,6 +109,10 @@ const Dashboard = () => {
             0
         );
     }, [activeLoans]);
+
+    /* =========================================================
+       SEARCH
+    ========================================================= */
 
     const filteredLoans = useMemo(() => {
         const term = searchTerm
@@ -142,6 +156,10 @@ const Dashboard = () => {
     const recentLoans = useMemo(() => {
         return filteredLoans.slice(0, 5);
     }, [filteredLoans]);
+
+    /* =========================================================
+       FORMATTERS
+    ========================================================= */
 
     const formatCurrency = (value) => {
         return new Intl.NumberFormat(
@@ -213,6 +231,10 @@ const Dashboard = () => {
     return (
         <div className="dashboard-page-v2">
 
+            {/* =====================================================
+                HERO
+            ===================================================== */}
+
             <section className="dashboard-hero-v2">
 
                 <div className="dashboard-hero-content">
@@ -247,6 +269,10 @@ const Dashboard = () => {
                 </div>
 
             </section>
+
+            {/* =====================================================
+                SEARCH
+            ===================================================== */}
 
             <section className="dashboard-search-section">
 
@@ -296,7 +322,16 @@ const Dashboard = () => {
 
             </section>
 
+            {/* =====================================================
+                KPI CARDS
+                3 COLUMNS × 2 ROWS
+            ===================================================== */}
+
             <section className="dashboard-stat-grid">
+
+                {/* =================================================
+                    1. TOTAL CLIENTS
+                ================================================= */}
 
                 <article className="dashboard-stat-card">
 
@@ -305,6 +340,7 @@ const Dashboard = () => {
                     </div>
 
                     <div className="dashboard-stat-content">
+
                         <span className="dashboard-stat-label">
                             {t("totalClients")}
                         </span>
@@ -318,9 +354,14 @@ const Dashboard = () => {
                         <span className="dashboard-stat-description">
                             {t("registeredClients")}
                         </span>
+
                     </div>
 
                 </article>
+
+                {/* =================================================
+                    2. ACTIVE LOANS
+                ================================================= */}
 
                 <article className="dashboard-stat-card">
 
@@ -329,6 +370,7 @@ const Dashboard = () => {
                     </div>
 
                     <div className="dashboard-stat-content">
+
                         <span className="dashboard-stat-label">
                             {t("activeLoanCount")}
                         </span>
@@ -342,9 +384,14 @@ const Dashboard = () => {
                         <span className="dashboard-stat-description">
                             {t("currentLendingRecords")}
                         </span>
+
                     </div>
 
                 </article>
+
+                {/* =================================================
+                    3. ACTIVE PRINCIPAL
+                ================================================= */}
 
                 <article className="dashboard-stat-card">
 
@@ -353,6 +400,7 @@ const Dashboard = () => {
                     </div>
 
                     <div className="dashboard-stat-content">
+
                         <span className="dashboard-stat-label">
                             {t("activePrincipal")}
                         </span>
@@ -361,74 +409,142 @@ const Dashboard = () => {
                             {loading
                                 ? "—"
                                 : formatCurrency(
-                                      activePrincipal
-                                  )}
+                                    activePrincipal
+                                )}
                         </strong>
 
                         <span className="dashboard-stat-description">
                             {t("principalCurrentlyLent")}
                         </span>
+
                     </div>
 
                 </article>
 
+                {/* =================================================
+                    4. INTEREST EARNED
+                ================================================= */}
+
                 <article className="dashboard-stat-card">
 
-                    <div className="dashboard-stat-icon gold-icon">
-                        Au
+                    <div className="dashboard-stat-icon interest-icon">
+                        ₹
                     </div>
 
                     <div className="dashboard-stat-content">
+
                         <span className="dashboard-stat-label">
-                            {t("goldLoans")}
+                            {language === "hi"
+                                ? "अर्जित ब्याज"
+                                : "Interest Earned"}
+                        </span>
+
+                        <strong className="dashboard-stat-value currency-value">
+                            {loading
+                                ? "—"
+                                : formatCurrency(
+                                    interestEarned
+                                )}
+                        </strong>
+
+                        <span className="dashboard-stat-description">
+                            {language === "hi"
+                                ? "लौटाए गए ऋणों से कुल ब्याज"
+                                : "Total interest from returned loans"}
+                        </span>
+
+                    </div>
+
+                </article>
+
+                {/* =================================================
+                    5. PRINCIPAL RECOVERED
+                ================================================= */}
+
+                <article className="dashboard-stat-card">
+
+                    <div className="dashboard-stat-icon recovered-icon">
+                        ✓
+                    </div>
+
+                    <div className="dashboard-stat-content">
+
+                        <span className="dashboard-stat-label">
+                            {language === "hi"
+                                ? "वसूल किया गया मूलधन"
+                                : "Principal Recovered"}
+                        </span>
+
+                        <strong className="dashboard-stat-value currency-value">
+                            {loading
+                                ? "—"
+                                : formatCurrency(
+                                    principalRecovered
+                                )}
+                        </strong>
+
+                        <span className="dashboard-stat-description">
+                            {language === "hi"
+                                ? "लौटाए गए ऋणों का कुल मूलधन"
+                                : "Total principal from returned loans"}
+                        </span>
+
+                    </div>
+
+                </article>
+
+                {/* =================================================
+                    6. RETURNED LOANS
+                ================================================= */}
+
+                <article className="dashboard-stat-card">
+
+                    <div className="dashboard-stat-icon returned-icon">
+                        ↩
+                    </div>
+
+                    <div className="dashboard-stat-content">
+
+                        <span className="dashboard-stat-label">
+                            {language === "hi"
+                                ? "लौटाए गए ऋण"
+                                : "Returned Loans"}
                         </span>
 
                         <strong className="dashboard-stat-value">
                             {loading
                                 ? "—"
-                                : activeGoldLoans.length}
+                                : returnedLoans.length}
                         </strong>
 
                         <span className="dashboard-stat-description">
-                            {t("activeGoldRecords")}
-                        </span>
-                    </div>
-
-                </article>
-
-                <article className="dashboard-stat-card">
-
-                    <div className="dashboard-stat-icon silver-icon">
-                        Ag
-                    </div>
-
-                    <div className="dashboard-stat-content">
-                        <span className="dashboard-stat-label">
-                            {t("silverLoans")}
+                            {language === "hi"
+                                ? "पूरे किए गए ऋण रिकॉर्ड"
+                                : "Completed lending records"}
                         </span>
 
-                        <strong className="dashboard-stat-value">
-                            {loading
-                                ? "—"
-                                : activeSilverLoans.length}
-                        </strong>
-
-                        <span className="dashboard-stat-description">
-                            {t("activeSilverRecords")}
-                        </span>
                     </div>
 
                 </article>
 
             </section>
 
+            {/* =====================================================
+                MAIN GRID
+            ===================================================== */}
+
             <section className="dashboard-main-grid">
+
+                {/* =================================================
+                    RECENT ACTIVITY
+                ================================================= */}
 
                 <div className="dashboard-panel dashboard-activity-panel">
 
                     <div className="dashboard-panel-header">
 
                         <div>
+
                             <h2>
                                 {t(
                                     "recentLendingActivity"
@@ -440,6 +556,7 @@ const Dashboard = () => {
                                     "latestLoanEntries"
                                 )}
                             </p>
+
                         </div>
 
                         <button
@@ -475,7 +592,9 @@ const Dashboard = () => {
                             <table className="dashboard-table">
 
                                 <thead>
+
                                     <tr>
+
                                         <th>
                                             {t(
                                                 "entryNo"
@@ -511,10 +630,13 @@ const Dashboard = () => {
                                                 "status"
                                             )}
                                         </th>
+
                                     </tr>
+
                                 </thead>
 
                                 <tbody>
+
                                     {recentLoans.map(
                                         (loan) => (
                                             <tr
@@ -522,7 +644,9 @@ const Dashboard = () => {
                                                     loan._id
                                                 }
                                             >
+
                                                 <td>
+
                                                     <span className="dashboard-entry-number">
                                                         {String(
                                                             loan.entryNumber ??
@@ -532,17 +656,22 @@ const Dashboard = () => {
                                                             "0"
                                                         )}
                                                     </span>
+
                                                 </td>
 
                                                 <td>
+
                                                     <span className="dashboard-allotment-number">
                                                         {loan.allotmentNumber ||
                                                             "-"}
                                                     </span>
+
                                                 </td>
 
                                                 <td>
+
                                                     <div className="dashboard-client-cell">
+
                                                         <strong>
                                                             {getClientName(
                                                                 loan
@@ -560,10 +689,13 @@ const Dashboard = () => {
                                                                 }
                                                             </span>
                                                         )}
+
                                                     </div>
+
                                                 </td>
 
                                                 <td>
+
                                                     <span
                                                         className={
                                                             loan.metalType ===
@@ -581,17 +713,21 @@ const Dashboard = () => {
                                                                   "silver"
                                                               )}
                                                     </span>
+
                                                 </td>
 
                                                 <td>
+
                                                     <strong className="dashboard-money">
                                                         {formatCurrency(
                                                             loan.principalAmount
                                                         )}
                                                     </strong>
+
                                                 </td>
 
                                                 <td>
+
                                                     <span
                                                         className={getStatusClass(
                                                             loan.status
@@ -601,10 +737,13 @@ const Dashboard = () => {
                                                             loan.status
                                                         )}
                                                     </span>
+
                                                 </td>
+
                                             </tr>
                                         )
                                     )}
+
                                 </tbody>
 
                             </table>
@@ -614,11 +753,16 @@ const Dashboard = () => {
 
                 </div>
 
+                {/* =================================================
+                    QUICK ACCESS
+                ================================================= */}
+
                 <div className="dashboard-panel dashboard-quick-panel">
 
                     <div className="dashboard-panel-header">
 
                         <div>
+
                             <h2>
                                 {t("quickAccess")}
                             </h2>
@@ -628,6 +772,7 @@ const Dashboard = () => {
                                     "frequentlyUsedSections"
                                 )}
                             </p>
+
                         </div>
 
                     </div>
@@ -643,11 +788,13 @@ const Dashboard = () => {
                                 )
                             }
                         >
+
                             <span className="dashboard-quick-symbol">
                                 +
                             </span>
 
                             <span className="dashboard-quick-text">
+
                                 <strong>
                                     {t(
                                         "createNewLendingRecord"
@@ -659,11 +806,13 @@ const Dashboard = () => {
                                         "newLoan"
                                     )}
                                 </small>
+
                             </span>
 
                             <span className="dashboard-quick-arrow">
                                 →
                             </span>
+
                         </button>
 
                         <button
@@ -675,11 +824,13 @@ const Dashboard = () => {
                                 )
                             }
                         >
+
                             <span className="dashboard-quick-symbol">
                                 ◇
                             </span>
 
                             <span className="dashboard-quick-text">
+
                                 <strong>
                                     {t(
                                         "activeLoans"
@@ -691,11 +842,13 @@ const Dashboard = () => {
                                         "viewManageActiveLoans"
                                     )}
                                 </small>
+
                             </span>
 
                             <span className="dashboard-quick-arrow">
                                 →
                             </span>
+
                         </button>
 
                         <button
@@ -707,11 +860,13 @@ const Dashboard = () => {
                                 )
                             }
                         >
+
                             <span className="dashboard-quick-symbol">
                                 ✓
                             </span>
 
                             <span className="dashboard-quick-text">
+
                                 <strong>
                                     {t(
                                         "returnedLoans"
@@ -723,11 +878,13 @@ const Dashboard = () => {
                                         "viewCompletedLoanRecords"
                                     )}
                                 </small>
+
                             </span>
 
                             <span className="dashboard-quick-arrow">
                                 →
                             </span>
+
                         </button>
 
                     </div>
@@ -735,6 +892,7 @@ const Dashboard = () => {
                     <div className="dashboard-quick-summary">
 
                         <div className="dashboard-summary-row">
+
                             <span>
                                 {t("totalLoanRecords")}
                             </span>
@@ -742,9 +900,11 @@ const Dashboard = () => {
                             <strong>
                                 {loans.length}
                             </strong>
+
                         </div>
 
                         <div className="dashboard-summary-row">
+
                             <span>
                                 {t("activeLoanCount")}
                             </span>
@@ -752,9 +912,11 @@ const Dashboard = () => {
                             <strong>
                                 {activeLoans.length}
                             </strong>
+
                         </div>
 
                         <div className="dashboard-summary-row">
+
                             <span>
                                 {t("returnedRecords")}
                             </span>
@@ -762,6 +924,7 @@ const Dashboard = () => {
                             <strong>
                                 {returnedLoans.length}
                             </strong>
+
                         </div>
 
                     </div>
@@ -770,6 +933,10 @@ const Dashboard = () => {
 
             </section>
 
+            {/* =====================================================
+                INFORMATION PANEL
+            ===================================================== */}
+
             <section className="dashboard-information-panel">
 
                 <div className="dashboard-information-icon">
@@ -777,6 +944,7 @@ const Dashboard = () => {
                 </div>
 
                 <div>
+
                     <h2>
                         {t("goldLedgerManagement")}
                     </h2>
@@ -784,6 +952,7 @@ const Dashboard = () => {
                     <p>
                         {t("dashboardInfo")}
                     </p>
+
                 </div>
 
             </section>

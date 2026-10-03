@@ -1025,3 +1025,502 @@
         grid-template-columns: 1fr;
     }
 }
+
+/* =========================================================
+   ACTIVE LOANS - DARK TABLE ONLY
+========================================================= */
+
+html[data-theme="dark"] .active-loans-page table,
+html[data-theme="dark"] .active-loans-page thead,
+html[data-theme="dark"] .active-loans-page tbody,
+html[data-theme="dark"] .active-loans-page tr,
+html[data-theme="dark"] .active-loans-page th,
+html[data-theme="dark"] .active-loans-page td {
+    background-color: #171717;
+}
+
+html[data-theme="dark"] .active-loans-page th {
+    background-color: #202020;
+    color: #bdbdbd;
+}
+
+html[data-theme="dark"] .active-loans-page td {
+    color: #e8e8e8;
+    border-color: #333333;
+}
+
+html[data-theme="dark"] .active-loans-page tbody tr:hover,
+html[data-theme="dark"] .active-loans-page tbody tr:hover td {
+    background-color: #242424;
+}
+
+/* =========================================================
+   RETURN MODAL - DARK THEME CONTROL OVERRIDES
+   Keep the modal cream/light even when the application is dark.
+========================================================= */
+
+html[data-theme="dark"] .loan-modal {
+    background: linear-gradient(145deg, #ffffff, #faf8f3);
+    color: #242424;
+}
+
+html[data-theme="dark"] .loan-modal-header {
+    border-bottom-color: #d9d5cc;
+}
+
+html[data-theme="dark"] .loan-modal-header h3 {
+    color: #242424;
+}
+
+html[data-theme="dark"] .loan-modal-header p {
+    color: #77736b;
+}
+
+html[data-theme="dark"] .modal-close-button {
+    background: #ffffff;
+    border-color: #aaa59b;
+    color: #5e5a54;
+}
+
+html[data-theme="dark"] .modal-close-button:hover {
+    background: #fff8e8;
+    border-color: #c59622;
+    color: #80600f;
+}
+
+html[data-theme="dark"] .return-loan-info > div {
+    background: linear-gradient(135deg, #f8f7f3, #efede7);
+    border-color: #d8d4cb;
+}
+
+html[data-theme="dark"] .return-loan-info span {
+    color: #77736b;
+}
+
+html[data-theme="dark"] .return-loan-info strong {
+    color: #242424;
+}
+
+html[data-theme="dark"] .return-date-field label {
+    color: #5f5b54;
+}
+
+html[data-theme="dark"] .return-date-field input {
+    background: #ffffff;
+    border-color: #aaa59b;
+    color: #242424;
+    color-scheme: light;
+}
+
+html[data-theme="dark"] .return-date-field input::placeholder {
+    color: #aaa59b;
+}
+
+html[data-theme="dark"] .return-calculation {
+    background: #ffffff;
+    border-color: #d8d1bf;
+}
+
+html[data-theme="dark"] .return-calculation h4 {
+    background: linear-gradient(135deg, #fff7df, #f3e5bd);
+    border-bottom-color: #e4d29b;
+    color: #242424;
+}
+
+html[data-theme="dark"] .calculation-row {
+    background: #ffffff;
+    border-bottom-color: #ebe7df;
+}
+
+html[data-theme="dark"] .calculation-row span {
+    color: #77736b;
+}
+
+html[data-theme="dark"] .calculation-row strong {
+    color: #242424;
+}
+
+html[data-theme="dark"] .calculation-total {
+    background: linear-gradient(135deg, #2e3233, #1f2324);
+    color: #e8cb68;
+}
+
+html[data-theme="dark"] .calculation-total strong {
+    color: #f1d777;
+}
+
+html[data-theme="dark"] .loan-modal-actions {
+    background: linear-gradient(180deg, #faf8f3, #f5f2eb);
+    border-top: 1px solid #ded9cf;
+}
+
+html[data-theme="dark"] .modal-cancel-button {
+    background: #ffffff;
+    border-color: #aaa59b;
+    color: #4f4b45;
+}
+
+html[data-theme="dark"] .modal-cancel-button:hover {
+    background: #f5f2eb;
+}
+
+html[data-theme="dark"] .calculate-button {
+    background: linear-gradient(135deg, #fffaf0, #f3e6c5);
+    border-color: #d9bd70;
+    color: #80600f;
+}
+
+html[data-theme="dark"] .calculate-button:hover {
+    background: #f8edcf;
+}
+
+/* =========================================================
+   ACTIVE LOANS TABLE HEADER
+   Match Returned Loans dark header
+========================================================= */
+
+.active-loans-table th {
+    background: #242321 !important;
+    color: #d8d5ce !important;
+    border-bottom: 1px solid #3a3834 !important;
+}
+
+.active-loans-table thead {
+    background: #242321 !important;
+}
+
+html[data-theme="dark"] .active-loans-table th {
+    background: #242321 !important;
+    color: #d8d5ce !important;
+}
+/* =========================================================
+   DIALOG THEME
+   LIGHT THEME = LIGHT DIALOG
+   DARK THEME = DARK DIALOG
+========================================================= */
+
+/* =========================================================
+   DARK MODE - MAIN EDIT DIALOG
+========================================================= */
+
+html[data-theme="dark"] .loan-modal {
+    background: #1c1c1c !important;
+    color: #eeeeee !important;
+    border: 1px solid #5b4a22 !important;
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.65) !important;
+}
+
+/* Gold line at top */
+html[data-theme="dark"] .loan-modal::before {
+    background:
+        linear-gradient(
+            90deg,
+            #8d6815,
+            #d4ad3d,
+            #9d7418
+        ) !important;
+}
+
+/* =========================================================
+   DARK MODE - MODAL HEADER
+========================================================= */
+
+html[data-theme="dark"] .loan-modal-header {
+    background: #1c1c1c !important;
+    border-bottom: 1px solid #383838 !important;
+}
+
+html[data-theme="dark"] .loan-modal-header h3 {
+    color: #f0f0f0 !important;
+}
+
+html[data-theme="dark"] .loan-modal-header p {
+    color: #929292 !important;
+}
+
+/* =========================================================
+   DARK MODE - CLOSE BUTTON
+========================================================= */
+
+html[data-theme="dark"] .modal-close-button {
+    background: #242424 !important;
+    border: 1px solid #555555 !important;
+    color: #bdbdbd !important;
+}
+
+html[data-theme="dark"] .modal-close-button:hover {
+    background: #302b1d !important;
+    border-color: #c59622 !important;
+    color: #e1bb50 !important;
+}
+
+/* =========================================================
+   DARK MODE - EDIT SECTIONS
+========================================================= */
+
+html[data-theme="dark"] .edit-section {
+    background: #1c1c1c !important;
+    border-bottom: 1px solid #353535 !important;
+}
+
+html[data-theme="dark"] .edit-section h4 {
+    color: #e5e5e5 !important;
+}
+
+/* =========================================================
+   DARK MODE - LABELS
+========================================================= */
+
+html[data-theme="dark"] .edit-field label {
+    color: #a8a8a8 !important;
+}
+
+html[data-theme="dark"] .edit-field label span {
+    color: #e06a5f !important;
+}
+
+/* =========================================================
+   DARK MODE - INPUTS
+========================================================= */
+
+html[data-theme="dark"] .edit-field input,
+html[data-theme="dark"] .edit-field select,
+html[data-theme="dark"] .edit-field textarea {
+    background: #242424 !important;
+    color: #eeeeee !important;
+
+    border: 1px solid #4a4a4a !important;
+}
+
+html[data-theme="dark"] .edit-field input::placeholder,
+html[data-theme="dark"] .edit-field textarea::placeholder {
+    color: #777777 !important;
+}
+
+html[data-theme="dark"] .edit-field input:focus,
+html[data-theme="dark"] .edit-field select:focus,
+html[data-theme="dark"] .edit-field textarea:focus {
+    background: #272727 !important;
+
+    border-color: #c59622 !important;
+
+    box-shadow:
+        0 0 0 3px rgba(197, 150, 34, 0.12) !important;
+}
+
+/* Disabled Entry No. / Loan ID */
+html[data-theme="dark"] .edit-field input:disabled {
+    background: #303030 !important;
+    color: #999999 !important;
+    border-color: #444444 !important;
+}
+
+/* =========================================================
+   DARK MODE - ACTIVE NOTICE
+========================================================= */
+
+html[data-theme="dark"] .edit-active-notice {
+    background:
+        linear-gradient(
+            135deg,
+            #302a1b,
+            #292416
+        ) !important;
+
+    border: 1px solid #66511e !important;
+    color: #c8b987 !important;
+}
+
+html[data-theme="dark"] .edit-active-notice strong {
+    color: #e0bd54 !important;
+}
+
+/* =========================================================
+   DARK MODE - MODAL FOOTER
+========================================================= */
+
+html[data-theme="dark"] .loan-modal-actions {
+    background: #191919 !important;
+    border-top: 1px solid #383838 !important;
+}
+
+/* Cancel */
+html[data-theme="dark"] .modal-cancel-button {
+    background: #252525 !important;
+    color: #d0d0d0 !important;
+    border: 1px solid #555555 !important;
+}
+
+html[data-theme="dark"] .modal-cancel-button:hover {
+    background: #303030 !important;
+    border-color: #777777 !important;
+    color: #ffffff !important;
+}
+
+/* Save */
+html[data-theme="dark"] .modal-save-button {
+    background:
+        linear-gradient(
+            135deg,
+            #c49a2c,
+            #9b7116
+        ) !important;
+
+    border: 1px solid #b88919 !important;
+    color: #ffffff !important;
+}
+
+html[data-theme="dark"] .modal-save-button:hover {
+    background:
+        linear-gradient(
+            135deg,
+            #d6ad3d,
+            #b6861c
+        ) !important;
+}
+
+/* =========================================================
+   DARK MODE - RETURN LOAN DIALOG
+========================================================= */
+
+html[data-theme="dark"] .return-modal {
+    background: #1c1c1c !important;
+}
+
+/* Client / Allotment / Principal / Rate cards */
+
+html[data-theme="dark"] .return-loan-info {
+    background: #1c1c1c !important;
+}
+
+html[data-theme="dark"] .return-loan-info > div {
+    background: #242424 !important;
+    border: 1px solid #484848 !important;
+}
+
+html[data-theme="dark"] .return-loan-info span {
+    color: #929292 !important;
+}
+
+html[data-theme="dark"] .return-loan-info strong {
+    color: #eeeeee !important;
+}
+
+/* =========================================================
+   DARK MODE - RETURN DATE
+========================================================= */
+
+html[data-theme="dark"] .return-date-field {
+    background: #1c1c1c !important;
+}
+
+html[data-theme="dark"] .return-date-field label {
+    color: #aaaaaa !important;
+}
+
+html[data-theme="dark"] .return-date-field input {
+    background: #242424 !important;
+    color: #eeeeee !important;
+
+    border: 1px solid #4a4a4a !important;
+
+    color-scheme: dark;
+}
+
+html[data-theme="dark"] .return-date-field input::placeholder {
+    color: #777777 !important;
+}
+
+html[data-theme="dark"] .return-date-field input:focus {
+    border-color: #c59622 !important;
+
+    box-shadow:
+        0 0 0 3px rgba(197, 150, 34, 0.12) !important;
+}
+
+/* =========================================================
+   DARK MODE - RETURN CALCULATION
+========================================================= */
+
+html[data-theme="dark"] .return-calculation {
+    background: #222222 !important;
+    border: 1px solid #454545 !important;
+}
+
+html[data-theme="dark"] .return-calculation h4 {
+    background:
+        linear-gradient(
+            135deg,
+            #332c1d,
+            #292416
+        ) !important;
+
+    color: #e5e5e5 !important;
+    border-bottom: 1px solid #5a491f !important;
+}
+
+html[data-theme="dark"] .calculation-row {
+    background: #222222 !important;
+    border-bottom: 1px solid #383838 !important;
+}
+
+html[data-theme="dark"] .calculation-row span {
+    color: #969696 !important;
+}
+
+html[data-theme="dark"] .calculation-row strong {
+    color: #eeeeee !important;
+}
+
+/* Total */
+html[data-theme="dark"] .calculation-total {
+    background:
+        linear-gradient(
+            135deg,
+            #292929,
+            #1d1d1d
+        ) !important;
+
+    color: #dcb84e !important;
+}
+
+html[data-theme="dark"] .calculation-total strong {
+    color: #f0d16a !important;
+}
+
+/* =========================================================
+   DARK MODE - CALCULATE BUTTON
+========================================================= */
+
+html[data-theme="dark"] .calculate-button {
+    background:
+        linear-gradient(
+            135deg,
+            #332d1e,
+            #282217
+        ) !important;
+
+    border: 1px solid #b18b2d !important;
+    color: #e0bd54 !important;
+}
+
+html[data-theme="dark"] .calculate-button:hover {
+    background:
+        linear-gradient(
+            135deg,
+            #403720,
+            #302919
+        ) !important;
+}
+
+/* =========================================================
+   DARK MODE - RETURN ERROR
+========================================================= */
+
+html[data-theme="dark"] .return-error {
+    background: #321f1f !important;
+    border: 1px solid #70403c !important;
+    color: #e78b82 !important;
+}

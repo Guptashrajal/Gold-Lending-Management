@@ -1,42 +1,79 @@
+/* =========================================================
+   RETURNED LOANS PAGE
+========================================================= */
+
 .returned-page {
     width: 100%;
 }
 
+
+/* =========================================================
+   PAGE COUNT
+========================================================= */
+
 .page-count {
     min-width: 48px;
     height: 48px;
+
     border-radius: 12px;
+
     background: #eeeafd;
     color: #5d4bd8;
-    display: flex;
+
+    display: none !important;
     align-items: center;
     justify-content: center;
+
     font-size: 18px;
     font-weight: 700;
 }
+
+
+/* =========================================================
+   TABLE PANEL
+========================================================= */
 
 .returned-table-panel {
     margin-top: 24px;
 }
 
+
+/* =========================================================
+   CLOSED STATUS
+========================================================= */
+
 .closed-status {
     display: inline-flex;
     align-items: center;
+
     padding: 5px 9px;
+
     border-radius: 20px;
+
     background: #e8f6ed;
     color: #27824a;
+
     font-size: 12px;
     font-weight: 700;
 }
 
+
+/* =========================================================
+   EDIT BUTTON
+========================================================= */
+
 .edit-button {
     border: 1px solid #d9d3ea;
+
     background: #f7f5fc;
     color: #5d4bd8;
+
     padding: 8px 13px;
+
     border-radius: 7px;
+
     cursor: pointer;
+
     font-size: 13px;
     font-weight: 600;
 }
@@ -45,160 +82,695 @@
     background: #eeeafd;
 }
 
+
+/* =========================================================
+   MODAL OVERLAY
+========================================================= */
+
 .modal-overlay {
     position: fixed;
+
     inset: 0;
-    background: rgba(31, 27, 45, 0.48);
+
+    background: rgba(20, 20, 20, 0.68);
+
+    backdrop-filter: blur(4px);
+
     display: flex;
-    align-items: center;
+
+    align-items: flex-start;
     justify-content: center;
+
     z-index: 1000;
-    padding: 20px;
+
+    padding: 35px 20px;
+
+    overflow-y: auto;
 }
 
+
+/* =========================================================
+   EDIT MODAL
+========================================================= */
+
 .edit-modal {
+    position: relative;
+
     width: min(850px, 100%);
-    max-height: 92vh;
+
+    max-height: calc(100vh - 70px);
+
     overflow-y: auto;
-    background: white;
-    border-radius: 16px;
-    padding: 24px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+    overflow-x: hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #faf8f3
+        );
+
+    color: #292824;
+
+    border: 1px solid #d8c68d;
+
+    border-radius: 14px;
+
+    padding: 0;
+
+    box-shadow:
+        0 22px 65px
+        rgba(20, 20, 18, 0.32);
 }
+
+
+/* Gold line across top */
+
+.edit-modal::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    top: 0;
+
+    height: 3px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #9f7413,
+            #e2c45d,
+            #b78a1a
+        );
+
+    z-index: 2;
+}
+
+
+/* =========================================================
+   MODAL HEADER
+========================================================= */
 
 .modal-header {
     display: flex;
+
     align-items: flex-start;
     justify-content: space-between;
-    margin-bottom: 20px;
+
+    padding: 24px 26px 18px;
+
+    margin: 0;
+
+    border-bottom: 1px solid #d8d4cb;
 }
 
 .modal-header h3 {
     margin: 0;
-    color: #29263a;
+
+    color: #292824;
+
+    font-size: 18px;
+    font-weight: 700;
 }
 
 .modal-header p {
     margin: 5px 0 0;
-    color: #8b8798;
-    font-size: 13px;
+
+    color: #77736b;
+
+    font-size: 10px;
 }
+
+
+/* =========================================================
+   CLOSE BUTTON
+========================================================= */
 
 .close-button {
     width: 34px;
     height: 34px;
-    border: none;
-    background: #f2eff8;
-    color: #5b566b;
-    border-radius: 8px;
-    font-size: 22px;
+
+    flex-shrink: 0;
+
+    border: 1px solid #aaa59b;
+
+    background: #ffffff;
+
+    color: #66625b;
+
+    border-radius: 7px;
+
+    font-size: 17px;
+
     cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
+.close-button:hover {
+    background: #fff8e8;
+
+    border-color: #c59622;
+
+    color: #8a6613;
+}
+
+
+/* =========================================================
+   EDIT FORM
+========================================================= */
 
 .edit-form {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 18px;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 0;
+
+    padding: 0;
 }
+
+
+/* =========================================================
+   SECTION HEADING
+========================================================= */
 
 .section-heading {
     grid-column: 1 / -1;
-    font-size: 15px;
+
+    font-size: 12px;
+
     font-weight: 700;
-    color: #514b68;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid #eeeaf3;
+
+    color: #36332d;
+
+    padding: 18px 26px 12px;
+
+    border-bottom: 1px solid #e1ddd5;
+
+    background: transparent;
 }
+
+
+/* =========================================================
+   FORM FIELD
+========================================================= */
 
 .form-field {
     display: flex;
+
     flex-direction: column;
-    gap: 7px;
+
+    gap: 6px;
+
+    min-width: 0;
+
+    padding: 10px 26px;
 }
 
 .form-field.full-width {
     grid-column: 1 / -1;
 }
 
+
+/* =========================================================
+   FORM LABEL
+========================================================= */
+
 .form-field label {
-    color: #514b68;
-    font-size: 13px;
-    font-weight: 600;
+    color: #68645c;
+
+    font-size: 9px;
+
+    font-weight: 650;
+
+    line-height: 1.3;
 }
+
+
+/* =========================================================
+   FORM INPUTS
+========================================================= */
 
 .form-field input,
 .form-field select,
 .form-field textarea {
-    border: 1px solid #ded9e9;
-    border-radius: 8px;
-    padding: 11px 12px;
-    font-size: 14px;
+    width: 100%;
+
+    box-sizing: border-box;
+
+    min-height: 38px;
+
+    border: 1px solid #aaa59b;
+
+    border-radius: 7px;
+
+    padding: 9px 11px;
+
+    font-family: inherit;
+
+    font-size: 11px;
+
     outline: none;
-    background: white;
-    color: #29263a;
+
+    background: #ffffff;
+
+    color: #292824;
+
+    transition:
+        border-color 0.15s ease,
+        box-shadow 0.15s ease,
+        background 0.15s ease;
 }
 
 .form-field textarea {
-    min-height: 80px;
+    min-height: 75px;
+
     resize: vertical;
 }
+
+
+/* Focus */
 
 .form-field input:focus,
 .form-field select:focus,
 .form-field textarea:focus {
-    border-color: #6c5ce7;
+    border-color: #c59622;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(197, 150, 34, 0.10);
 }
+
+
+/* Placeholder */
+
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+    color: #aaa59b;
+}
+
+
+/* Disabled */
+
+.form-field input:disabled,
+.form-field select:disabled,
+.form-field textarea:disabled {
+    background: #eeeeea;
+
+    color: #77736b;
+
+    border-color: #d0ccc4;
+
+    cursor: not-allowed;
+}
+
+
+/* =========================================================
+   FORM ACTIONS
+========================================================= */
 
 .form-actions {
     grid-column: 1 / -1;
+
     display: flex;
+
     justify-content: flex-end;
-    gap: 10px;
-    padding-top: 8px;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 17px 26px;
+
+    margin-top: 10px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #faf8f3,
+            #f5f2eb
+        );
+
+    border-top: 1px solid #d8d4cb;
 }
+
+
+/* =========================================================
+   CANCEL BUTTON
+========================================================= */
 
 .cancel-button {
-    border: 1px solid #d9d3e5;
-    background: white;
-    color: #514b68;
-    padding: 11px 18px;
-    border-radius: 8px;
+    border: 1px solid #aaa59b;
+
+    background: #ffffff;
+
+    color: #555149;
+
+    padding: 9px 15px;
+
+    border-radius: 7px;
+
     cursor: pointer;
-    font-weight: 600;
+
+    font-size: 10px;
+
+    font-weight: 650;
 }
 
+.cancel-button:hover {
+    background: #f3f0e8;
+
+    border-color: #8f8a80;
+}
+
+
+/* =========================================================
+   PRIMARY BUTTON
+========================================================= */
+
 .primary-button {
-    border: none;
-    background: #5d4bd8;
-    color: white;
-    padding: 11px 18px;
-    border-radius: 8px;
+    border: 1px solid #b98918;
+
+    background:
+        linear-gradient(
+            135deg,
+            #d9b447,
+            #b98918
+        );
+
+    color: #ffffff;
+
+    padding: 9px 16px;
+
+    border-radius: 7px;
+
     cursor: pointer;
-    font-weight: 600;
+
+    font-size: 10px;
+
+    font-weight: 650;
+}
+
+.primary-button:hover {
+    background:
+        linear-gradient(
+            135deg,
+            #e0c05a,
+            #c59622
+        );
 }
 
 .primary-button:disabled {
     opacity: 0.6;
+
     cursor: not-allowed;
 }
 
+
+/* =========================================================
+   DARK MODE
+========================================================= */
+
+html[data-theme="dark"] .modal-overlay {
+    background: rgba(0, 0, 0, 0.74);
+}
+
+
+/* =========================================================
+   DARK MODE - MODAL
+========================================================= */
+
+html[data-theme="dark"] .edit-modal {
+    background:
+        linear-gradient(
+            145deg,
+            #1d1d1d,
+            #181818
+        ) !important;
+
+    color: #eeeeee !important;
+
+    border-color: #5b4a22 !important;
+
+    box-shadow:
+        0 25px 70px
+        rgba(0, 0, 0, 0.70) !important;
+}
+
+
+/* =========================================================
+   DARK MODE - HEADER
+========================================================= */
+
+html[data-theme="dark"] .modal-header {
+    background: #1d1d1d !important;
+
+    border-bottom-color: #383838 !important;
+}
+
+html[data-theme="dark"] .modal-header h3 {
+    color: #eeeeee !important;
+}
+
+html[data-theme="dark"] .modal-header p {
+    color: #8d8d8d !important;
+}
+
+
+/* =========================================================
+   DARK MODE - CLOSE
+========================================================= */
+
+html[data-theme="dark"] .close-button {
+    background: #252525 !important;
+
+    border-color: #505050 !important;
+
+    color: #bdbdbd !important;
+}
+
+html[data-theme="dark"] .close-button:hover {
+    background: #302b1d !important;
+
+    border-color: #c59622 !important;
+
+    color: #e0bd54 !important;
+}
+
+
+/* =========================================================
+   DARK MODE - SECTION HEADINGS
+========================================================= */
+
+html[data-theme="dark"] .section-heading {
+    background: #1d1d1d !important;
+
+    color: #e5e5e5 !important;
+
+    border-bottom-color: #353535 !important;
+}
+
+
+/* =========================================================
+   DARK MODE - FORM FIELDS
+========================================================= */
+
+html[data-theme="dark"] .form-field {
+    background: #1d1d1d !important;
+}
+
+html[data-theme="dark"] .form-field label {
+    color: #a8a8a8 !important;
+}
+
+
+/* =========================================================
+   DARK MODE - INPUTS
+========================================================= */
+
+html[data-theme="dark"] .form-field input,
+html[data-theme="dark"] .form-field select,
+html[data-theme="dark"] .form-field textarea {
+    background: #242424 !important;
+
+    color: #eeeeee !important;
+
+    border-color: #484848 !important;
+}
+
+html[data-theme="dark"] .form-field input::placeholder,
+html[data-theme="dark"] .form-field textarea::placeholder {
+    color: #777777 !important;
+}
+
+html[data-theme="dark"] .form-field input:focus,
+html[data-theme="dark"] .form-field select:focus,
+html[data-theme="dark"] .form-field textarea:focus {
+    background: #282828 !important;
+
+    color: #eeeeee !important;
+
+    border-color: #c59622 !important;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(197, 150, 34, 0.12) !important;
+}
+
+
+/* =========================================================
+   DARK MODE - DISABLED INPUTS
+========================================================= */
+
+html[data-theme="dark"] .form-field input:disabled,
+html[data-theme="dark"] .form-field select:disabled,
+html[data-theme="dark"] .form-field textarea:disabled {
+    background: #303030 !important;
+
+    color: #999999 !important;
+
+    border-color: #444444 !important;
+}
+
+
+/* =========================================================
+   DARK MODE - ACTION BAR
+========================================================= */
+
+html[data-theme="dark"] .form-actions {
+    background:
+        linear-gradient(
+            180deg,
+            #191919,
+            #171717
+        ) !important;
+
+    border-top-color: #383838 !important;
+}
+
+
+/* =========================================================
+   DARK MODE - CANCEL
+========================================================= */
+
+html[data-theme="dark"] .cancel-button {
+    background: #252525 !important;
+
+    color: #d0d0d0 !important;
+
+    border-color: #555555 !important;
+}
+
+html[data-theme="dark"] .cancel-button:hover {
+    background: #303030 !important;
+
+    color: #ffffff !important;
+
+    border-color: #777777 !important;
+}
+
+
+/* =========================================================
+   DARK MODE - SAVE
+========================================================= */
+
+html[data-theme="dark"] .primary-button {
+    background:
+        linear-gradient(
+            135deg,
+            #c49a2c,
+            #9b7116
+        ) !important;
+
+    border-color: #b88919 !important;
+
+    color: #ffffff !important;
+}
+
+html[data-theme="dark"] .primary-button:hover {
+    background:
+        linear-gradient(
+            135deg,
+            #d6ad3d,
+            #b6861c
+        ) !important;
+}
+
+
+/* =========================================================
+   LIGHT MODE
+========================================================= */
+
+html[data-theme="light"] .edit-modal {
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #faf8f3
+        );
+
+    color: #292824;
+}
+
+html[data-theme="light"] .modal-header {
+    background: transparent;
+}
+
+html[data-theme="light"] .form-field {
+    background: transparent;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
 @media (max-width: 700px) {
+
+    .edit-modal {
+        max-height: calc(100vh - 30px);
+
+        border-radius: 12px;
+    }
+
+    .modal-header {
+        padding: 20px 18px 16px;
+    }
+
     .edit-form {
         grid-template-columns: 1fr;
     }
 
-    .form-field.full-width,
-    .section-heading,
+    .section-heading {
+        grid-column: 1;
+
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .form-field {
+        grid-column: 1 !important;
+
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
     .form-actions {
         grid-column: 1;
+
+        flex-direction: column-reverse;
+
+        padding: 15px 18px;
     }
 
-    .table-wrapper {
-        overflow-x: auto;
-    }
-
-    table {
-        min-width: 1100px;
+    .cancel-button,
+    .primary-button {
+        width: 100%;
     }
 }
