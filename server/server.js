@@ -26,34 +26,47 @@ app.use(
 app.use(express.json());
 
 /* =========================================================
-   DATABASE
+   DATABASE CONNECTION
 ========================================================= */
 
 let databaseConnection = null;
+let databaseConnectionPromise = null;
 
 const ensureDatabaseConnection = async () => {
-    if (databaseConnection) {
+    if (
+        databaseConnection &&
+        databaseConnection.connection &&
+        databaseConnection.connection.readyState === 1
+    ) {
         return databaseConnection;
     }
 
-    databaseConnection = await connectDB();
+    if (!databaseConnectionPromise) {
+        databaseConnectionPromise = connectDB();
+    }
 
-    return databaseConnection;
+    try {
+        databaseConnection =
+            await databaseConnectionPromise;
+
+        return databaseConnection;
+    } catch (error) {
+        databaseConnectionPromise = null;
+        databaseConnection = null;
+
+        throw error;
+    }
 };
 
 /* =========================================================
-   ROOT
+   DATABASE MIDDLEWARE
+   Every request waits for MongoDB before reaching routes.
 ========================================================= */
 
-app.get("/", async (req, res) => {
+app.use(async (req, res, next) => {
     try {
         await ensureDatabaseConnection();
-
-        res.json({
-            success: true,
-            message:
-                "Gold & Silver Lending Management API is running"
-        });
+        next();
     } catch (error) {
         console.error(
             "Database connection error:",
@@ -68,31 +81,28 @@ app.get("/", async (req, res) => {
 });
 
 /* =========================================================
+   ROOT
+========================================================= */
+
+app.get("/", (req, res) => {
+    res.json({
+        success: true,
+        message:
+            "Gold & Silver Lending Management API is running"
+    });
+});
+
+/* =========================================================
    HEALTH CHECK
 ========================================================= */
 
-app.get("/api/health", async (req, res) => {
-    try {
-        await ensureDatabaseConnection();
-
-        res.json({
-            success: true,
-            message: "Server is healthy",
-            database: "connected",
-            timestamp: new Date().toISOString()
-        });
-    } catch (error) {
-        console.error(
-            "Health check database error:",
-            error.message
-        );
-
-        res.status(500).json({
-            success: false,
-            message: "Database connection failed",
-            timestamp: new Date().toISOString()
-        });
-    }
+app.get("/api/health", (req, res) => {
+    res.json({
+        success: true,
+        message: "Server is healthy",
+        database: "connected",
+        timestamp: new Date().toISOString()
+    });
 });
 
 /* =========================================================
